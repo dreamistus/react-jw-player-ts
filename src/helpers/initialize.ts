@@ -9,7 +9,7 @@ type InitializeArgType = {
   playerOpts: PlayerOpts; };
 
 function initialize({ component, player, playerOpts }: InitializeArgType): void {
-  console.info('Init player');
+  // console.info('Init player');
 
   player.setup( playerOpts );
 
