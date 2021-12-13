@@ -21,7 +21,7 @@ The project originally started as a fork of the existing [react-jw-player](https
 :x:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write a thorough documentation
 
 ## Installation
-
+:warning:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOR TESTING ONLY: currently not recommended for production use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:warning:
 ```shell
 npm install react-jw-player-ts
 ```
