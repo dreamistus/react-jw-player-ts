@@ -68,7 +68,6 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
   }
 
   componentDidMount(): void {
-    //  console.info('Component did mount');
     const isJWPlayerScriptLoaded = Boolean((window as ExtendedWindow).jwplayer);
     const existingScript = document.getElementById(this.uniqueScriptId);
 
@@ -88,7 +87,6 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
   }
 
   shouldComponentUpdate(nextProps: ReactJWPlayerProps): boolean {
-    //  console.info('Component should update');
     const hasFileChanged = this.props.file !== nextProps.file;
     const hasPlaylistChanged = !isEqual(this.props.playlist, nextProps.playlist);
     const hasIsMutedChanged = this.props.isMuted !== nextProps.isMuted;
@@ -96,8 +94,7 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
     return hasFileChanged || hasPlaylistChanged || hasIsMutedChanged;
   }
 
-  componentDidUpdate(): void{
-    // console.info('Component did update');
+  componentDidUpdate(): void {
     if (typeof window !== 'undefined' && this.videoRef !== null) {
       const extendedWindow = window as ExtendedWindow;
       const player = extendedWindow.jwplayer(this.videoRef);
@@ -110,7 +107,6 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
   }
 
   componentWillUnmount(): void {
-    // console.info('Component will unmount');
     const existingScript = document.getElementById(this.uniqueScriptId);
     existingScript?.removeEventListener('onload', this._initialize);
     if (this.videoRef) {

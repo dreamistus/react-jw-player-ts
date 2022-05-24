@@ -9,8 +9,6 @@ type InitializeArgType = {
   playerOpts: PlayerOpts; };
 
 function initialize({ component, player, playerOpts }: InitializeArgType): void {
-  // console.info('Init player');
-
   player.setup( playerOpts );
 
   /* Link callbacks to native jwplayer events */
