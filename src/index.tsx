@@ -59,10 +59,10 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
 
   constructor(props: ReactJWPlayerProps) {
     super(props);
-    this.state = { foo: 'bar' };
-    this.uniqueScriptId = UNIQUE_SCRIPT_ID;
 
+    this.uniqueScriptId = UNIQUE_SCRIPT_ID;
     this.videoRef = null;
+    
     this._initialize = this._initialize.bind(this);
     this._setVideoRef = this._setVideoRef.bind(this);
   }
@@ -95,8 +95,20 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
   }
 
   componentDidUpdate(): void {
-    if (typeof window !== 'undefined' && this.videoRef !== null) {
+    if (typeof window !== 'undefined') {
       const extendedWindow = window as ExtendedWindow;
+
+      if (!extendedWindow.jwplayer) {
+        console.error('JWPlayer script not initialized');
+
+        return;
+      }
+      if (!this.videoRef) {
+        console.error(`JWPlayer instance (${ this.props.playerId }) not initialized`);
+
+        return;
+      }
+    
       const player = extendedWindow.jwplayer(this.videoRef);
 
       //TODO: update other props
