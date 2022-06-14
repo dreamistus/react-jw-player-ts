@@ -1,0 +1,68 @@
+{
+  "extends": [
+    "airbnb-typescript",
+    "plugin:sonarjs/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/jsx-runtime"
+],
+"plugins": [
+    "sonarjs",
+    "@typescript-eslint",
+    "import"
+],
+"parser": "@typescript-eslint/parser",
+"parserOptions": {
+    "sourceType": "module",
+    "files": ["*.ts", "*.tsx"],
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "project": ["tsconfig.json"]
+},
+"settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+"env": {
+    "browser": true,
+    "es2020": true,
+    "jest": true
+},
+"rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "comma-dangle": ["error", "never"],
+    "max-len": [2, { "code": 120, "ignoreUrls": true, "ignoreStrings": true }],
+    "no-console": ["error", { "allow": ["warn", "info", "error"] }],
+    "template-curly-spacing": ["error", "always"],
+    "import/extensions": ["error", "ignorePackages", {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+    }],
+    "react/jsx-curly-spacing": [2, { "when": "always", "children": true }],
+    "react/static-property-placement": ["error", "static public field"],
+    "@typescript-eslint/comma-dangle": ["error", "never"],
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/member-delimiter-style": "error",
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }]
+},
+"overrides": [
+    {
+        "files": ["**/*.tsx", "**/*.ts"],
+        "rules": {
+            "react/prop-types": "off"
+        }
+    },
+    {
+        "files": ["**/*.js"],
+        "rules": {
+            "@typescript-eslint/explicit-function-return-type": "off",
+            "@typescript-eslint/explicit-module-boundary-types": "off"
+        }
+    }
+]
+}

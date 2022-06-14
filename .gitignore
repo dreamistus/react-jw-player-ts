@@ -1,0 +1,19 @@
+# build
+dist
+*.tgz
+
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# misc
+.DS_Store
+
+# debug
+npm-debug.log*
+
+# ide
+.idea/
+.vscode/
