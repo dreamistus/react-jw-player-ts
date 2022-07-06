@@ -1,6 +1,6 @@
 {
   "name": "react-jw-player-ts",
-  "version": "0.0.3-alpha.1",
+  "version": "0.0.3-alpha.2",
   "description": "A fork of react-jw-player rewritten in typescript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

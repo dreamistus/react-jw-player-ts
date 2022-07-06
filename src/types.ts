@@ -261,7 +261,7 @@ export const callbackToEventMap: { [key in keyof Partial<ReactJWPlayerProps>]: k
   onAudioTrackChanged: 'audioTrackChanged'
 };
 
-type AudioTrack = {
+export type AudioTrack = {
   /** If no explicit preference is chosen, can be chosen based on system language */
   autoselect: boolean;
 
