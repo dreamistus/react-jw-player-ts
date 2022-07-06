@@ -136,6 +136,17 @@ export interface ReactJWPlayerProps {
   onSetupError?: jwplayer.EventCallback<jwplayer.EventParams['setupError']>;
 }
 
+export interface ReactJWPlayerProps {
+  /** Fired when the list of available audio tracks is updated. Happens shortly after a playlist item starts playing. */
+  onAudioTracks?: jwplayer.EventCallback<jwplayer.EventParams['audioTracks']>;
+
+  /** Fired when the active audio track is changed. 
+   * Happens in response to e.g. a user clicking the audio tracks menu or a script calling setCurrentAudioTrack(). 
+   */
+  onAudioTrackChanged?: jwplayer.EventCallback<jwplayer.EventParams['audioTrackChanged']>;
+}
+
+
 /** Misc JWPlayer events */
 // export interface ReactJWPlayerProps{
 /** Triggers when the recommendations interface is closed. */
@@ -244,5 +255,52 @@ export const callbackToEventMap: { [key in keyof Partial<ReactJWPlayerProps>]: k
   onSetupError: 'setupError',
   onTime: 'time',
   onBuffer: 'buffer',
-  onBufferChange: 'bufferChange'
+  onBufferChange: 'bufferChange',
+
+  onAudioTracks: 'audioTracks',
+  onAudioTrackChanged: 'audioTrackChanged'
 };
+
+type AudioTrack = {
+  /** If no explicit preference is chosen, can be chosen based on system language */
+  autoselect: boolean;
+
+  /** Returns true if the track should be chosen by default */
+  defaulttrack: boolean;
+
+  /** The two-letter language code for the chosen audio track */
+  language: string;
+
+  /** The given name for the chosen audio track */
+  name: string;	
+};
+
+export interface ReactJWPlayerInstance {
+  /**  Returns an array of each audio track object */
+  getAudioTracks(): AudioTrack[];
+
+  /**  Returns The index of the currently active audio track.
+   * @returns index or -1 if there are no alternative audio tracks
+   */
+  getCurrentAudioTrack(): number;
+
+  /** Sets the play state of the JW Player. Calling play() while media is playing does nothing. */
+  play(): jwplayer.JWPlayer;
+
+  /** Pauses playback, changing the state of JW Player from playing to paused. 
+   * Calling pause() while media is already paused does nothing. 
+   */  
+  pause(): jwplayer.JWPlayer;
+
+  /** Stops the player, returning it to the idle state. */
+  stop(): jwplayer.JWPlayer;
+
+  /** Change the audio track to the provided index. */
+  setCurrentAudioTrack(index: number): void;
+
+  /** Set the mute state of the player. If the state is undefined, mute is toggled. */
+  setMute(state?: boolean): jwplayer.JWPlayer;
+
+  /** Set the volume of the player between 1-100 */
+  setVolume(volume: number): jwplayer.JWPlayer;  
+}
