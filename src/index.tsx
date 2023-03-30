@@ -5,7 +5,12 @@ import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
 import removeJWPlayerInstance from './helpers/remove-jw-player-instance';
-import { ExtendedWindow, ReactJWPlayerProps, ReactJWPlayerState } from './types';
+import { 
+  ExtendedWindow,
+  ReactJWPlayerInstance,
+  ReactJWPlayerProps,
+  ReactJWPlayerState
+} from './types';
 
 const UNIQUE_SCRIPT_ID = 'jw-player-script';
 const DISPLAY_NAME = 'ReactJWPlayer';
@@ -55,7 +60,7 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
 
   private uniqueScriptId;
 
-  private videoRef: Element | null;
+  private videoRef: Element & ReactJWPlayerInstance | null;
 
   constructor(props: ReactJWPlayerProps) {
     super(props);
@@ -99,7 +104,8 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
       const extendedWindow = window as ExtendedWindow;
 
       if (!extendedWindow.jwplayer) {
-        console.error('JWPlayer script not initialized');
+        // TODO: provide better error handling
+        // console.error('JWPlayer script not initialized');
 
         return;
       }
@@ -145,7 +151,7 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
     initialize({ component, player, playerOpts });
   }
 
-  _setVideoRef = (element: HTMLDivElement): void => {
+  _setVideoRef = (element: HTMLDivElement & ReactJWPlayerInstance): void => {
     this.videoRef = element;
   };
 
