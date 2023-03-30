@@ -5,7 +5,12 @@ import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
 import removeJWPlayerInstance from './helpers/remove-jw-player-instance';
-import { ExtendedWindow, ReactJWPlayerInstance, ReactJWPlayerProps, ReactJWPlayerState } from './types';
+import { 
+  ExtendedWindow,
+  ReactJWPlayerInstance,
+  ReactJWPlayerProps,
+  ReactJWPlayerState
+} from './types';
 
 const UNIQUE_SCRIPT_ID = 'jw-player-script';
 const DISPLAY_NAME = 'ReactJWPlayer';
