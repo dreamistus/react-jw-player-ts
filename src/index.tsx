@@ -104,7 +104,8 @@ class ReactJWPlayer extends React.Component<ReactJWPlayerProps, ReactJWPlayerSta
       const extendedWindow = window as ExtendedWindow;
 
       if (!extendedWindow.jwplayer) {
-        console.error('JWPlayer script not initialized');
+        // TODO: provide better error handling
+        // console.error('JWPlayer script not initialized');
 
         return;
       }
