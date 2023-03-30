@@ -167,7 +167,7 @@ export interface ReactJWPlayerState {
 export type PlayerConfigs = { [playerId: string] : unknown }; 
   
 export type ExtendedWindow = Window  & typeof globalThis & {
-  jwplayer: jwplayer.JWPlayerStatic;
+  jwplayer: JWPlayerStatic;
   __JW_PLAYER_CONFIGS__: PlayerConfigs;
 };
 
